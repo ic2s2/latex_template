@@ -1,0 +1,44 @@
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{ic2s2}[2018/01/26 IC2S2 Extended Abstract Layout]
+
+%Margins are one inch on all sides
+%headheight+headsep should add to 1 inch
+\RequirePackage[margin=1in,headheight=0.7in,headsep=0.3in,footskip=0.5in]{geometry}
+
+%Some basic options to be set by the user
+\newcommand*{\shorttitle}[1]{\gdef\@shorttitle{#1}%
+}
+\newcommand*{\keywords}[1]{\gdef\@keywords{#1}%
+}
+\newcommand*{\confdates}[1]{\gdef\@confdates{#1}%
+}
+\newcommand*{\conflocation}[1]{\gdef\@conflocation{#1}%
+}
+
+
+
+%These commands set up the header, footer, and title commands
+\RequirePackage{fancyhdr}
+\RequirePackage{lastpage}
+\RequirePackage[singlespacing]{setspace}
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+\chead{4\textsuperscript{th} International Conference on Computational Social Science IC\textsuperscript{2}S\textsuperscript{2}, \@confdates\\\@conflocation}
+\cfoot{Page \thepage\ of \pageref{LastPage}: \@shorttitle}
+
+
+\renewcommand*{\maketitle}{%
+\let\thetitle=\@title%
+\let\theshorttitle=\@shorttitle%
+{\centering%
+{\bfseries\@title\unskip\strut\par}
+\vspace{1ex}
+{\@author\unskip\strut\par}
+\vspace{2ex}
+{\textit{Keywords: \@keywords}}
+}}
+
+
+\endinput
